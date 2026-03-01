@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Factorial Calculator</title>
+<meta name="description" content="Calculate factorial of any number instantly.">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;padding:40px;}
+.container{max-width:600px;margin:auto;background:#1e293b;padding:30px;border-radius:12px;}
+input{width:100%;padding:10px;border:none;border-radius:8px;}
+button{margin-top:10px;width:100%;padding:10px;background:#3b82f6;color:white;border:none;border-radius:8px;}
+a{color:#3b82f6;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Factorial Calculator</h1>
+<input type="number" id="num">
+<button onclick="calc()">Calculate</button>
+<p id="result"></p>
+<br><a href="../index.html">← Back</a>
+</div>
+<script>
+function calc(){
+let n=num.value,f=1;
+for(let i=1;i<=n;i++)f*=i;
+result.innerText="Factorial: "+f;
+}
+</script>
+</body>
+</html>
