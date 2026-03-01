@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Utility Hub | Smart Academic Tools</title>
-<meta name="description" content="Modern academic tool platform for students.">
+<meta name="description" content="Modern academic tool platform with calculators students frequently search for.">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -33,23 +33,6 @@ font-family:'Inter',sans-serif;
 background:var(--bg);
 color:var(--text);
 transition:0.4s ease;
-overflow-x:hidden;
-}
-
-body::before{
-content:"";
-position:fixed;
-width:100%;
-height:100%;
-background:radial-gradient(circle at 20% 30%, rgba(59,130,246,0.2), transparent 40%),
-radial-gradient(circle at 80% 70%, rgba(139,92,246,0.2), transparent 40%);
-z-index:-1;
-animation:floatBg 15s infinite alternate ease-in-out;
-}
-
-@keyframes floatBg{
-0%{transform:translateY(0px);}
-100%{transform:translateY(-40px);}
 }
 
 nav{
@@ -57,41 +40,28 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:25px 40px;
-backdrop-filter:blur(15px);
 background:rgba(0,0,0,0.2);
+backdrop-filter:blur(15px);
 }
 
 nav h2{
 margin:0;
 font-weight:700;
-letter-spacing:1px;
 }
 
 nav button{
-padding:8px 16px;
+padding:8px 15px;
 border:none;
 background:var(--accent);
 color:white;
 border-radius:8px;
 cursor:pointer;
-transition:0.3s;
-}
-
-nav button:hover{
-box-shadow:0 0 20px var(--glow);
-transform:translateY(-2px);
 }
 
 .container{
 max-width:1200px;
 margin:80px auto;
 padding:20px;
-animation:fadeIn 1s ease forwards;
-opacity:0;
-}
-
-@keyframes fadeIn{
-to{opacity:1;}
 }
 
 .grid{
@@ -102,15 +72,15 @@ gap:35px;
 
 .card{
 background:var(--card);
-padding:30px;
+padding:25px;
 border-radius:20px;
-backdrop-filter:blur(25px);
+backdrop-filter:blur(20px);
 box-shadow:0 20px 40px rgba(0,0,0,0.3);
 transition:0.4s ease;
 }
 
 .card:hover{
-transform:translateY(-12px);
+transform:translateY(-10px);
 box-shadow:0 25px 60px rgba(0,0,0,0.5);
 }
 
@@ -119,35 +89,28 @@ margin-top:0;
 font-weight:600;
 }
 
-input{
+input, textarea{
 width:100%;
-padding:12px;
-margin:10px 0;
+padding:10px;
+margin:8px 0;
 border-radius:10px;
 border:none;
 outline:none;
-font-size:14px;
 }
 
 button.calc{
 width:100%;
-padding:12px;
+padding:10px;
 background:var(--accent);
 color:white;
 border:none;
 border-radius:10px;
 cursor:pointer;
-transition:0.3s;
-font-weight:600;
-}
-
-button.calc:hover{
-box-shadow:0 0 25px var(--glow);
-transform:translateY(-3px);
+margin-top:10px;
 }
 
 .result{
-margin-top:12px;
+margin-top:10px;
 font-weight:600;
 }
 
@@ -155,7 +118,6 @@ footer{
 margin-top:100px;
 padding:40px;
 text-align:center;
-backdrop-filter:blur(15px);
 background:rgba(0,0,0,0.3);
 }
 
@@ -164,11 +126,6 @@ color:var(--text);
 text-decoration:none;
 margin:0 15px;
 font-size:14px;
-transition:0.3s;
-}
-
-footer a:hover{
-color:var(--accent);
 }
 
 @media(max-width:600px){
@@ -188,39 +145,54 @@ gap:15px;
 </nav>
 
 <div class="container">
-
 <div class="grid">
 
 <div class="card">
-<h3>Attendance Required</h3>
-<input type="number" id="attended" placeholder="Attended">
-<input type="number" id="total" placeholder="Total Classes">
-<input type="number" id="required" placeholder="Required %">
-<button class="calc" onclick="attendanceRequired()">Calculate</button>
-<div class="result" id="attendanceResult"></div>
+<h3>Final Exam Marks Needed</h3>
+<input type="number" id="currentScore" placeholder="Current Score (%)">
+<input type="number" id="targetScore" placeholder="Target Overall (%)">
+<input type="number" id="finalWeight" placeholder="Final Exam Weightage (%)">
+<button class="calc" onclick="finalExamCalc()">Calculate</button>
+<div class="result" id="finalExamResult"></div>
 </div>
 
 <div class="card">
-<h3>CGPA to Percentage</h3>
-<input type="number" id="cgpa" placeholder="Enter CGPA">
-<button class="calc" onclick="cgpaConvert()">Convert</button>
-<div class="result" id="cgpaResult"></div>
+<h3>Required GPA for Target CGPA</h3>
+<input type="number" id="currentCgpa" placeholder="Current CGPA">
+<input type="number" id="targetCgpa" placeholder="Target CGPA">
+<input type="number" id="completedSem" placeholder="Completed Semesters">
+<button class="calc" onclick="requiredGPA()">Calculate</button>
+<div class="result" id="requiredGPAResult"></div>
 </div>
 
 <div class="card">
-<h3>GCD Calculator</h3>
-<input type="number" id="num1" placeholder="First Number">
-<input type="number" id="num2" placeholder="Second Number">
-<button class="calc" onclick="calcGCD()">Calculate</button>
-<div class="result" id="gcdResult"></div>
+<h3>Percentage ↔ CGPA</h3>
+<input type="number" id="percentageInput" placeholder="Enter Percentage">
+<button class="calc" onclick="percentageToCgpa()">Convert</button>
+<div class="result" id="percentageResult"></div>
 </div>
 
 <div class="card">
-<h3>Percentage Increase</h3>
-<input type="number" id="oldVal" placeholder="Old Value">
-<input type="number" id="newVal" placeholder="New Value">
-<button class="calc" onclick="percentIncrease()">Calculate</button>
-<div class="result" id="percentResult"></div>
+<h3>Word & Character Counter</h3>
+<textarea id="textInput" rows="3"></textarea>
+<button class="calc" onclick="wordCounter()">Count</button>
+<div class="result" id="wordResult"></div>
+</div>
+
+<div class="card">
+<h3>Binary to Decimal</h3>
+<input type="text" id="binaryInput" placeholder="Enter Binary">
+<button class="calc" onclick="binaryToDecimal()">Convert</button>
+<div class="result" id="binaryResult"></div>
+</div>
+
+<div class="card">
+<h3>Linear Equation Solver</h3>
+<input type="number" id="aVal" placeholder="a">
+<input type="number" id="bVal" placeholder="b">
+<input type="number" id="cVal" placeholder="c">
+<button class="calc" onclick="solveEquation()">Solve</button>
+<div class="result" id="equationResult"></div>
 </div>
 
 </div>
@@ -241,28 +213,42 @@ function toggleMode(){
 document.body.classList.toggle("light");
 }
 
-function attendanceRequired(){
-let a=attended.value,t=total.value,r=required.value,x=0;
-if(a==""||t==""||r==""){attendanceResult.innerText="Fill all fields";return;}
-while(((a*1+x)/(t*1+x))*100<r){x++;}
-attendanceResult.innerText="Attend "+x+" more classes";
+function finalExamCalc(){
+let current=currentScore.value;
+let target=targetScore.value;
+let weight=finalWeight.value/100;
+let required=((target - (current*(1-weight)))/weight);
+finalExamResult.innerText="You need "+required.toFixed(2)+"% in final exam";
 }
 
-function cgpaConvert(){
-if(cgpa.value==""){cgpaResult.innerText="Enter CGPA";return;}
-cgpaResult.innerText="Percentage = "+(cgpa.value*9.5).toFixed(2)+"%";
+function requiredGPA(){
+let current=currentCgpa.value;
+let target=targetCgpa.value;
+let sem=completedSem.value;
+let needed=(target*(sem+1) - current*sem);
+requiredGPAResult.innerText="You need GPA "+needed.toFixed(2)+" next semester";
 }
 
-function calcGCD(){
-let a=num1.value,b=num2.value;
-while(b!=0){let temp=b;b=a%b;a=temp;}
-gcdResult.innerText="GCD = "+a;
+function percentageToCgpa(){
+let cgpa=percentageInput.value/9.5;
+percentageResult.innerText="CGPA = "+cgpa.toFixed(2);
 }
 
-function percentIncrease(){
-if(oldVal.value==""||newVal.value==""){percentResult.innerText="Fill all fields";return;}
-let p=((newVal.value-oldVal.value)/oldVal.value)*100;
-percentResult.innerText="Increase = "+p.toFixed(2)+"%";
+function wordCounter(){
+let text=textInput.value.trim();
+let words=text==""?0:text.split(/\s+/).length;
+let chars=text.length;
+wordResult.innerText="Words: "+words+" | Characters: "+chars;
+}
+
+function binaryToDecimal(){
+let val=parseInt(binaryInput.value,2);
+binaryResult.innerText="Decimal = "+val;
+}
+
+function solveEquation(){
+let x=(cVal.value-bVal.value)/aVal.value;
+equationResult.innerText="x = "+x;
 }
 </script>
 
