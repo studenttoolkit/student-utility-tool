@@ -3,40 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Final Exam Marks Needed Calculator</title>
-<meta name="description" content="Calculate how much you need to score in your final exam to reach your target overall percentage.">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<title>Final Exam Marks Needed Calculator (2026 Updated)</title>
+
+<meta name="description" content="Use this free Final Exam Marks Calculator to find how much you need to score in your final exam to reach your target overall percentage.">
 
 <style>
 body{
-margin:0;
-font-family:'Inter',sans-serif;
+font-family:Arial;
 background:#0f172a;
-color:#f1f5f9;
+color:white;
+margin:0;
+padding:40px;
+line-height:1.6;
 }
-
 .container{
-max-width:700px;
-margin:80px auto;
-padding:30px;
+max-width:800px;
+margin:auto;
 background:#1e293b;
-border-radius:15px;
-box-shadow:0 20px 40px rgba(0,0,0,0.4);
+padding:30px;
+border-radius:12px;
 }
-
-h1{
-margin-top:0;
-}
-
 input{
 width:100%;
 padding:10px;
 margin:8px 0;
-border-radius:8px;
 border:none;
+border-radius:8px;
 }
-
 button{
 width:100%;
 padding:10px;
@@ -47,15 +41,19 @@ border-radius:8px;
 cursor:pointer;
 margin-top:10px;
 }
-
 .result{
 margin-top:15px;
-font-weight:600;
+font-weight:bold;
 }
-
 a{
 color:#3b82f6;
 text-decoration:none;
+}
+.section{
+margin-top:40px;
+}
+h2{
+margin-bottom:10px;
 }
 </style>
 </head>
@@ -66,30 +64,56 @@ text-decoration:none;
 
 <h1>Final Exam Marks Needed Calculator</h1>
 
-<p>Use this calculator to determine how much you need to score in your final exam to reach your desired overall percentage.</p>
+<p>This calculator helps students determine how much they need to score in their final exam to reach a desired overall percentage. It works for school, college, university, and competitive exams.</p>
 
-<input type="number" id="currentScore" placeholder="Current Score (%)">
-<input type="number" id="targetScore" placeholder="Target Overall (%)">
-<input type="number" id="finalWeight" placeholder="Final Exam Weightage (%)">
+<input type="number" id="current" placeholder="Current Score (%)">
+<input type="number" id="target" placeholder="Target Overall (%)">
+<input type="number" id="weight" placeholder="Final Exam Weightage (%)">
 
-<button onclick="calculate()">Calculate</button>
+<button onclick="calc()">Calculate</button>
 
 <div class="result" id="result"></div>
 
-<br>
-<a href="../index.html">← Back to Home</a>
+<div class="section">
+<h2>How This Calculator Works</h2>
+<p>The formula used is:</p>
+<p><strong>Required Marks = (Target − Current × (1 − Weight)) ÷ Weight</strong></p>
+<p>Weight is converted into decimal form before calculation.</p>
+</div>
+
+<div class="section">
+<h2>Example</h2>
+<p>If your current score is 60%, your target is 75%, and the final exam weightage is 40%, this calculator will tell you exactly what percentage you must score in the final exam to achieve 75% overall.</p>
+</div>
+
+<div class="section">
+<h2>Frequently Asked Questions</h2>
+
+<p><strong>Is this calculator accurate?</strong><br>
+Yes. It uses a standard weighted average formula.</p>
+
+<p><strong>Can I use this for university grading?</strong><br>
+Yes, as long as you know the weightage of your final exam.</p>
+
+<p><strong>What if the required score is above 100%?</strong><br>
+That means reaching the target is not mathematically possible.</p>
+</div>
+
+<div class="section">
+<h2>Related Tools</h2>
+<p>
+<a href="required-gpa-calculator.html">Required GPA Calculator</a><br>
+<a href="simple-interest-calculator.html">Simple Interest Calculator</a><br>
+<a href="../index.html">Back to Homepage</a>
+</p>
+</div>
 
 </div>
 
 <script>
-function calculate(){
-let current=currentScore.value;
-let target=targetScore.value;
-let weight=finalWeight.value/100;
-
-let required=((target - (current*(1-weight)))/weight);
-
-result.innerText="You need "+required.toFixed(2)+"% in the final exam.";
+function calc(){
+let req=((target.value-(current.value*(1-weight.value/100)))/(weight.value/100));
+result.innerText="You need "+req.toFixed(2)+"% in final exam.";
 }
 </script>
 
