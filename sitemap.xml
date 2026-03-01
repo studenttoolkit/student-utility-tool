@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<url>
+  <loc>https://student-utility-tool.netlify.app/</loc>
+</url>
+
+<url>
+  <loc>https://student-utility-tool.netlify.app/gcd-calculator.html</loc>
+</url>
+
+<url>
+  <loc>https://student-utility-tool.netlify.app/cgpa-calculator.html</loc>
+</url>
+
+<url>
+  <loc>https://student-utility-tool.netlify.app/attendance-calculator.html</loc>
+</url>
+
+</urlset>
