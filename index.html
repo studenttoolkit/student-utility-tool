@@ -2,35 +2,59 @@
 <html>
 <head>
     <title>Student Utility Hub</title>
+    <meta name="description" content="Free online student calculators including CGPA, GCD, Percentage and Binary converters.">
     <style>
         body {
             font-family: Arial;
             background: #f4f6f9;
+            margin: 0;
             text-align: center;
-            padding: 40px;
+        }
+        header {
+            background: #222;
+            color: white;
+            padding: 15px;
+        }
+        .container {
+            padding: 30px;
         }
         .box {
             background: white;
             padding: 20px;
             margin: 20px auto;
-            width: 300px;
+            width: 320px;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
         }
         input {
             padding: 8px;
             margin: 5px;
-            width: 80%;
+            width: 85%;
         }
         button {
             padding: 8px 15px;
             cursor: pointer;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            background: #222;
+            color: white;
         }
     </style>
 </head>
 <body>
 
-<h1>Student Utility Hub</h1>
+<header>
+    <h1>Student Utility Hub</h1>
+    <p>Free Online Calculators for Students</p>
+</header>
+
+<div class="container">
 
 <div class="box">
     <h3>GCD Calculator</h3>
@@ -39,6 +63,27 @@
     <button onclick="calculateGCD()">Calculate</button>
     <p id="gcdResult"></p>
 </div>
+
+<div class="box">
+    <h3>Percentage Calculator</h3>
+    <input type="number" id="total" placeholder="Total Marks">
+    <input type="number" id="obtained" placeholder="Obtained Marks">
+    <button onclick="calculatePercentage()">Calculate</button>
+    <p id="percentResult"></p>
+</div>
+
+<div class="box">
+    <h3>Binary to Decimal Converter</h3>
+    <input type="text" id="binary" placeholder="Enter Binary Number">
+    <button onclick="convertBinary()">Convert</button>
+    <p id="binaryResult"></p>
+</div>
+
+</div>
+
+<footer>
+    © 2026 Student Utility Hub | Free Academic Tools
+</footer>
 
 <script>
 function calculateGCD() {
@@ -52,6 +97,21 @@ function calculateGCD() {
     }
 
     document.getElementById("gcdResult").innerText = "GCD = " + a;
+}
+
+function calculatePercentage() {
+    let total = document.getElementById("total").value;
+    let obtained = document.getElementById("obtained").value;
+
+    let percent = (obtained / total) * 100;
+    document.getElementById("percentResult").innerText = "Percentage = " + percent.toFixed(2) + "%";
+}
+
+function convertBinary() {
+    let binary = document.getElementById("binary").value;
+    let decimal = parseInt(binary, 2);
+
+    document.getElementById("binaryResult").innerText = "Decimal = " + decimal;
 }
 </script>
 
