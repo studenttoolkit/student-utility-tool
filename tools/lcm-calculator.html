@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LCM Calculator</title>
+<meta name="description" content="Find LCM of two numbers easily.">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;padding:40px;}
+.container{max-width:600px;margin:auto;background:#1e293b;padding:30px;border-radius:12px;}
+input{width:100%;padding:10px;margin:5px 0;border:none;border-radius:8px;}
+button{margin-top:10px;width:100%;padding:10px;background:#3b82f6;color:white;border:none;border-radius:8px;}
+a{color:#3b82f6;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>LCM Calculator</h1>
+<input type="number" id="a">
+<input type="number" id="b">
+<button onclick="calc()">Calculate</button>
+<p id="result"></p>
+<br><a href="../index.html">← Back</a>
+</div>
+<script>
+function calc(){
+let x=a.value,y=b.value,max=Math.max(x,y);
+while(true){if(max%x==0&&max%y==0){result.innerText="LCM: "+max;break;}max++;}
+}
+</script>
+</body>
+</html>
