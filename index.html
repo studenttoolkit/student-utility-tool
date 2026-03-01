@@ -4,148 +4,177 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Utility Hub | Smart Academic Tools</title>
+<meta name="description" content="Modern academic tool platform for students.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
 --bg:#0f172a;
---card:rgba(30,41,59,0.7);
+--card:rgba(255,255,255,0.06);
 --text:#f1f5f9;
 --accent:#3b82f6;
---hover:#2563eb;
---glass:rgba(255,255,255,0.05);
+--glow:rgba(59,130,246,0.4);
 }
 
 .light{
 --bg:#f4f6f9;
---card:rgba(255,255,255,0.7);
+--card:rgba(255,255,255,0.8);
 --text:#111827;
 --accent:#2563eb;
---hover:#1d4ed8;
---glass:rgba(0,0,0,0.05);
+--glow:rgba(37,99,235,0.3);
 }
+
+*{box-sizing:border-box;}
 
 body{
 margin:0;
-font-family:system-ui,-apple-system,Segoe UI,Roboto;
+font-family:'Inter',sans-serif;
 background:var(--bg);
 color:var(--text);
-transition:0.3s;
+transition:0.4s ease;
+overflow-x:hidden;
 }
 
-.app{
-display:flex;
-min-height:100vh;
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle at 20% 30%, rgba(59,130,246,0.2), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(139,92,246,0.2), transparent 40%);
+z-index:-1;
+animation:floatBg 15s infinite alternate ease-in-out;
 }
 
-.sidebar{
-width:220px;
-background:var(--card);
-backdrop-filter:blur(15px);
-padding:20px;
-box-shadow:4px 0 20px rgba(0,0,0,0.3);
+@keyframes floatBg{
+0%{transform:translateY(0px);}
+100%{transform:translateY(-40px);}
 }
 
-.sidebar h2{
-margin-top:0;
-}
-
-.sidebar a{
-display:block;
-margin:15px 0;
-text-decoration:none;
-color:var(--text);
-font-weight:500;
-}
-
-.main{
-flex:1;
-padding:30px;
-}
-
-.topbar{
+nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:30px;
+padding:25px 40px;
+backdrop-filter:blur(15px);
+background:rgba(0,0,0,0.2);
 }
 
-.search{
-padding:10px;
-width:250px;
-border-radius:8px;
-border:none;
-outline:none;
+nav h2{
+margin:0;
+font-weight:700;
+letter-spacing:1px;
 }
 
-.toggle{
-padding:8px 15px;
+nav button{
+padding:8px 16px;
 border:none;
 background:var(--accent);
 color:white;
-border-radius:6px;
+border-radius:8px;
 cursor:pointer;
+transition:0.3s;
+}
+
+nav button:hover{
+box-shadow:0 0 20px var(--glow);
+transform:translateY(-2px);
+}
+
+.container{
+max-width:1200px;
+margin:80px auto;
+padding:20px;
+animation:fadeIn 1s ease forwards;
+opacity:0;
+}
+
+@keyframes fadeIn{
+to{opacity:1;}
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+gap:35px;
 }
 
 .card{
 background:var(--card);
-backdrop-filter:blur(20px);
-padding:25px;
-border-radius:16px;
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
-transition:0.3s;
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(25px);
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
+transition:0.4s ease;
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 15px 40px rgba(0,0,0,0.6);
+transform:translateY(-12px);
+box-shadow:0 25px 60px rgba(0,0,0,0.5);
 }
 
 .card h3{
 margin-top:0;
+font-weight:600;
 }
 
 input{
 width:100%;
-padding:10px;
-margin:8px 0;
-border-radius:8px;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
 border:none;
 outline:none;
+font-size:14px;
 }
 
-.calc-btn{
+button.calc{
 width:100%;
-padding:10px;
+padding:12px;
 background:var(--accent);
 color:white;
 border:none;
-border-radius:8px;
+border-radius:10px;
 cursor:pointer;
-margin-top:10px;
+transition:0.3s;
+font-weight:600;
+}
+
+button.calc:hover{
+box-shadow:0 0 25px var(--glow);
+transform:translateY(-3px);
 }
 
 .result{
-margin-top:10px;
-font-weight:bold;
+margin-top:12px;
+font-weight:600;
 }
 
-@media(max-width:768px){
-.app{
-flex-direction:column;
+footer{
+margin-top:100px;
+padding:40px;
+text-align:center;
+backdrop-filter:blur(15px);
+background:rgba(0,0,0,0.3);
 }
-.sidebar{
-width:100%;
-display:flex;
-overflow:auto;
-}
-.sidebar a{
+
+footer a{
+color:var(--text);
+text-decoration:none;
 margin:0 15px;
+font-size:14px;
+transition:0.3s;
+}
+
+footer a:hover{
+color:var(--accent);
+}
+
+@media(max-width:600px){
+nav{
+flex-direction:column;
+gap:15px;
 }
 }
 </style>
@@ -153,64 +182,59 @@ margin:0 15px;
 
 <body>
 
-<div class="app">
+<nav>
+<h2>Student Utility Hub</h2>
+<button onclick="toggleMode()">Toggle Mode</button>
+</nav>
 
-<div class="sidebar">
-<h2>Utility Hub</h2>
-<a href="#">Attendance</a>
-<a href="#">CGPA</a>
-<a href="#">Math Tools</a>
-<a href="#">Finance</a>
-</div>
-
-<div class="main">
-
-<div class="topbar">
-<input type="text" class="search" placeholder="Search tools...">
-<button class="toggle" onclick="toggleMode()">Toggle Mode</button>
-</div>
+<div class="container">
 
 <div class="grid">
 
-<!-- Attendance Required -->
 <div class="card">
 <h3>Attendance Required</h3>
 <input type="number" id="attended" placeholder="Attended">
-<input type="number" id="total" placeholder="Total">
+<input type="number" id="total" placeholder="Total Classes">
 <input type="number" id="required" placeholder="Required %">
-<button class="calc-btn" onclick="attendanceRequired()">Calculate</button>
+<button class="calc" onclick="attendanceRequired()">Calculate</button>
 <div class="result" id="attendanceResult"></div>
 </div>
 
-<!-- CGPA -->
 <div class="card">
 <h3>CGPA to Percentage</h3>
 <input type="number" id="cgpa" placeholder="Enter CGPA">
-<button class="calc-btn" onclick="cgpaConvert()">Convert</button>
+<button class="calc" onclick="cgpaConvert()">Convert</button>
 <div class="result" id="cgpaResult"></div>
 </div>
 
-<!-- GCD -->
 <div class="card">
 <h3>GCD Calculator</h3>
-<input type="number" id="num1" placeholder="First">
-<input type="number" id="num2" placeholder="Second">
-<button class="calc-btn" onclick="calcGCD()">Calculate</button>
+<input type="number" id="num1" placeholder="First Number">
+<input type="number" id="num2" placeholder="Second Number">
+<button class="calc" onclick="calcGCD()">Calculate</button>
 <div class="result" id="gcdResult"></div>
 </div>
 
-<!-- Percentage Increase -->
 <div class="card">
 <h3>Percentage Increase</h3>
-<input type="number" id="oldVal" placeholder="Old">
-<input type="number" id="newVal" placeholder="New">
-<button class="calc-btn" onclick="percentIncrease()">Calculate</button>
+<input type="number" id="oldVal" placeholder="Old Value">
+<input type="number" id="newVal" placeholder="New Value">
+<button class="calc" onclick="percentIncrease()">Calculate</button>
 <div class="result" id="percentResult"></div>
 </div>
 
 </div>
 </div>
+
+<footer>
+<div>© 2026 Student Utility Hub</div>
+<div style="margin-top:15px;">
+<a href="about.html">About</a>
+<a href="privacy-policy.html">Privacy Policy</a>
+<a href="contact.html">Contact</a>
+<a href="disclaimer.html">Disclaimer</a>
 </div>
+</footer>
 
 <script>
 function toggleMode(){
@@ -219,8 +243,14 @@ document.body.classList.toggle("light");
 
 function attendanceRequired(){
 let a=attended.value,t=total.value,r=required.value,x=0;
+if(a==""||t==""||r==""){attendanceResult.innerText="Fill all fields";return;}
 while(((a*1+x)/(t*1+x))*100<r){x++;}
 attendanceResult.innerText="Attend "+x+" more classes";
+}
+
+function cgpaConvert(){
+if(cgpa.value==""){cgpaResult.innerText="Enter CGPA";return;}
+cgpaResult.innerText="Percentage = "+(cgpa.value*9.5).toFixed(2)+"%";
 }
 
 function calcGCD(){
@@ -230,22 +260,11 @@ gcdResult.innerText="GCD = "+a;
 }
 
 function percentIncrease(){
+if(oldVal.value==""||newVal.value==""){percentResult.innerText="Fill all fields";return;}
 let p=((newVal.value-oldVal.value)/oldVal.value)*100;
 percentResult.innerText="Increase = "+p.toFixed(2)+"%";
 }
-  <footer>
-© 2026 Student Utility Hub
-
-<div style="margin-top:10px;">
-<a href="about.html" style="margin:0 10px; color:inherit;">About</a>
-<a href="privacy-policy.html" style="margin:0 10px; color:inherit;">Privacy Policy</a>
-<a href="contact.html" style="margin:0 10px; color:inherit;">Contact</a>
-<a href="#" style="margin:0 10px; color:inherit;">Disclaimer</a>
-</div>
-
-</footer>
 </script>
 
 </body>
 </html>
-
