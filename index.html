@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Utility Hub | Smart Academic Tools</title>
-<meta name="description" content="Modern academic tool platform with calculators students frequently search for.">
+<title>Student Utility Hub | All-in-One Smart Tools</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -14,125 +13,84 @@
 --card:rgba(255,255,255,0.06);
 --text:#f1f5f9;
 --accent:#3b82f6;
---glow:rgba(59,130,246,0.4);
 }
-
 .light{
 --bg:#f4f6f9;
---card:rgba(255,255,255,0.8);
+--card:rgba(255,255,255,0.9);
 --text:#111827;
 --accent:#2563eb;
---glow:rgba(37,99,235,0.3);
 }
-
 *{box-sizing:border-box;}
-
 body{
 margin:0;
 font-family:'Inter',sans-serif;
 background:var(--bg);
 color:var(--text);
-transition:0.4s ease;
+transition:0.3s;
 }
-
 nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:25px 40px;
+padding:20px 40px;
 background:rgba(0,0,0,0.2);
-backdrop-filter:blur(15px);
 }
-
-nav h2{
-margin:0;
-font-weight:700;
-}
-
 nav button{
 padding:8px 15px;
-border:none;
 background:var(--accent);
 color:white;
+border:none;
 border-radius:8px;
 cursor:pointer;
 }
-
 .container{
-max-width:1200px;
-margin:80px auto;
+max-width:1300px;
+margin:50px auto;
 padding:20px;
 }
-
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:35px;
+gap:25px;
 }
-
 .card{
 background:var(--card);
-padding:25px;
-border-radius:20px;
-backdrop-filter:blur(20px);
-box-shadow:0 20px 40px rgba(0,0,0,0.3);
-transition:0.4s ease;
+padding:20px;
+border-radius:15px;
+backdrop-filter:blur(15px);
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 25px 60px rgba(0,0,0,0.5);
-}
-
-.card h3{
-margin-top:0;
-font-weight:600;
-}
-
-input, textarea{
+.card h3{margin-top:0;}
+input,textarea{
 width:100%;
-padding:10px;
-margin:8px 0;
-border-radius:10px;
+padding:8px;
+margin:6px 0;
+border-radius:8px;
 border:none;
 outline:none;
 }
-
 button.calc{
 width:100%;
-padding:10px;
+padding:8px;
+margin-top:5px;
 background:var(--accent);
 color:white;
 border:none;
-border-radius:10px;
+border-radius:8px;
 cursor:pointer;
-margin-top:10px;
 }
-
-.result{
-margin-top:10px;
-font-weight:600;
-}
-
+.result{margin-top:6px;font-weight:600;}
 footer{
-margin-top:100px;
-padding:40px;
+margin-top:60px;
+padding:30px;
 text-align:center;
 background:rgba(0,0,0,0.3);
 }
-
 footer a{
 color:var(--text);
+margin:0 10px;
 text-decoration:none;
-margin:0 15px;
 font-size:14px;
-}
-
-@media(max-width:600px){
-nav{
-flex-direction:column;
-gap:15px;
-}
 }
 </style>
 </head>
@@ -147,17 +105,19 @@ gap:15px;
 <div class="container">
 <div class="grid">
 
+<!-- FINAL EXAM -->
 <div class="card">
 <h3>Final Exam Marks Needed</h3>
-<input type="number" id="currentScore" placeholder="Current Score (%)">
-<input type="number" id="targetScore" placeholder="Target Overall (%)">
-<input type="number" id="finalWeight" placeholder="Final Exam Weightage (%)">
+<input type="number" id="currentScore" placeholder="Current %">
+<input type="number" id="targetScore" placeholder="Target %">
+<input type="number" id="finalWeight" placeholder="Final Weightage %">
 <button class="calc" onclick="finalExamCalc()">Calculate</button>
 <div class="result" id="finalExamResult"></div>
 </div>
 
+<!-- REQUIRED GPA -->
 <div class="card">
-<h3>Required GPA for Target CGPA</h3>
+<h3>Required GPA</h3>
 <input type="number" id="currentCgpa" placeholder="Current CGPA">
 <input type="number" id="targetCgpa" placeholder="Target CGPA">
 <input type="number" id="completedSem" placeholder="Completed Semesters">
@@ -165,42 +125,80 @@ gap:15px;
 <div class="result" id="requiredGPAResult"></div>
 </div>
 
+<!-- WORD COUNTER -->
 <div class="card">
-<h3>Percentage ↔ CGPA</h3>
-<input type="number" id="percentageInput" placeholder="Enter Percentage">
-<button class="calc" onclick="percentageToCgpa()">Convert</button>
-<div class="result" id="percentageResult"></div>
-</div>
-
-<div class="card">
-<h3>Word & Character Counter</h3>
-<textarea id="textInput" rows="3"></textarea>
+<h3>Word Counter</h3>
+<textarea id="textInput"></textarea>
 <button class="calc" onclick="wordCounter()">Count</button>
 <div class="result" id="wordResult"></div>
 </div>
 
+<!-- PRIME CHECK -->
+<div class="card">
+<h3>Prime Checker</h3>
+<input type="number" id="primeInput">
+<button class="calc" onclick="checkPrime()">Check</button>
+<div class="result" id="primeResult"></div>
+</div>
+
+<!-- FACTORIAL -->
+<div class="card">
+<h3>Factorial</h3>
+<input type="number" id="factInput">
+<button class="calc" onclick="calcFactorial()">Calculate</button>
+<div class="result" id="factResult"></div>
+</div>
+
+<!-- LCM -->
+<div class="card">
+<h3>LCM</h3>
+<input type="number" id="lcm1">
+<input type="number" id="lcm2">
+<button class="calc" onclick="calcLCM()">Calculate</button>
+<div class="result" id="lcmResult"></div>
+</div>
+
+<!-- GCD -->
+<div class="card">
+<h3>GCD</h3>
+<input type="number" id="gcd1">
+<input type="number" id="gcd2">
+<button class="calc" onclick="calcGCD()">Calculate</button>
+<div class="result" id="gcdResult"></div>
+</div>
+
+<!-- DECIMAL TO BINARY -->
+<div class="card">
+<h3>Decimal to Binary</h3>
+<input type="number" id="decInput">
+<button class="calc" onclick="decToBinary()">Convert</button>
+<div class="result" id="decResult"></div>
+</div>
+
+<!-- BINARY TO DECIMAL -->
 <div class="card">
 <h3>Binary to Decimal</h3>
-<input type="text" id="binaryInput" placeholder="Enter Binary">
+<input type="text" id="binaryInput">
 <button class="calc" onclick="binaryToDecimal()">Convert</button>
 <div class="result" id="binaryResult"></div>
 </div>
 
+<!-- SIMPLE INTEREST -->
 <div class="card">
-<h3>Linear Equation Solver</h3>
-<input type="number" id="aVal" placeholder="a">
-<input type="number" id="bVal" placeholder="b">
-<input type="number" id="cVal" placeholder="c">
-<button class="calc" onclick="solveEquation()">Solve</button>
-<div class="result" id="equationResult"></div>
+<h3>Simple Interest</h3>
+<input type="number" id="p" placeholder="Principal">
+<input type="number" id="r" placeholder="Rate">
+<input type="number" id="t" placeholder="Time">
+<button class="calc" onclick="simpleInterest()">Calculate</button>
+<div class="result" id="siResult"></div>
 </div>
 
 </div>
 </div>
 
 <footer>
-<div>© 2026 Student Utility Hub</div>
-<div style="margin-top:15px;">
+© 2026 Student Utility Hub
+<div style="margin-top:10px;">
 <a href="about.html">About</a>
 <a href="privacy-policy.html">Privacy Policy</a>
 <a href="contact.html">Contact</a>
@@ -209,46 +207,56 @@ gap:15px;
 </footer>
 
 <script>
-function toggleMode(){
-document.body.classList.toggle("light");
-}
+function toggleMode(){document.body.classList.toggle("light");}
 
 function finalExamCalc(){
-let current=currentScore.value;
-let target=targetScore.value;
-let weight=finalWeight.value/100;
-let required=((target - (current*(1-weight)))/weight);
-finalExamResult.innerText="You need "+required.toFixed(2)+"% in final exam";
+let c=currentScore.value,t=targetScore.value,w=finalWeight.value/100;
+let req=((t-(c*(1-w)))/w);
+finalExamResult.innerText="Need "+req.toFixed(2)+"%";
 }
 
 function requiredGPA(){
-let current=currentCgpa.value;
-let target=targetCgpa.value;
-let sem=completedSem.value;
-let needed=(target*(sem+1) - current*sem);
-requiredGPAResult.innerText="You need GPA "+needed.toFixed(2)+" next semester";
-}
-
-function percentageToCgpa(){
-let cgpa=percentageInput.value/9.5;
-percentageResult.innerText="CGPA = "+cgpa.toFixed(2);
+let c=currentCgpa.value,t=targetCgpa.value,s=completedSem.value;
+let need=(t*(s+1)-c*s);
+requiredGPAResult.innerText="Need GPA "+need.toFixed(2);
 }
 
 function wordCounter(){
 let text=textInput.value.trim();
 let words=text==""?0:text.split(/\s+/).length;
-let chars=text.length;
-wordResult.innerText="Words: "+words+" | Characters: "+chars;
+wordResult.innerText="Words: "+words+" | Characters: "+text.length;
 }
 
-function binaryToDecimal(){
-let val=parseInt(binaryInput.value,2);
-binaryResult.innerText="Decimal = "+val;
+function checkPrime(){
+let n=primeInput.value,prime=true;
+for(let i=2;i<n;i++){if(n%i==0){prime=false;break;}}
+primeResult.innerText=prime?"Prime":"Not Prime";
 }
 
-function solveEquation(){
-let x=(cVal.value-bVal.value)/aVal.value;
-equationResult.innerText="x = "+x;
+function calcFactorial(){
+let n=factInput.value,f=1;
+for(let i=1;i<=n;i++)f*=i;
+factResult.innerText="Factorial = "+f;
+}
+
+function calcLCM(){
+let a=lcm1.value,b=lcm2.value,max=Math.max(a,b);
+while(true){if(max%a==0&&max%b==0){lcmResult.innerText="LCM = "+max;break;}max++;}
+}
+
+function calcGCD(){
+let a=gcd1.value,b=gcd2.value;
+while(b!=0){let t=b;b=a%b;a=t;}
+gcdResult.innerText="GCD = "+a;
+}
+
+function decToBinary(){decResult.innerText="Binary = "+(decInput.value*1).toString(2);}
+
+function binaryToDecimal(){binaryResult.innerText="Decimal = "+parseInt(binaryInput.value,2);}
+
+function simpleInterest(){
+let si=(p.value*r.value*t.value)/100;
+siResult.innerText="SI = "+si;
 }
 </script>
 
