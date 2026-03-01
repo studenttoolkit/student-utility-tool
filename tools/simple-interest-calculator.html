@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Interest Calculator</title>
+<meta name="description" content="Calculate simple interest easily using principal, rate and time.">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;padding:40px;}
+.container{max-width:600px;margin:auto;background:#1e293b;padding:30px;border-radius:12px;}
+input{width:100%;padding:10px;margin:8px 0;border:none;border-radius:8px;}
+button{width:100%;padding:10px;background:#3b82f6;color:white;border:none;border-radius:8px;}
+a{color:#3b82f6;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Simple Interest Calculator</h1>
+<input type="number" id="p" placeholder="Principal">
+<input type="number" id="r" placeholder="Rate (%)">
+<input type="number" id="t" placeholder="Time (Years)">
+<button onclick="calc()">Calculate</button>
+<p id="result"></p>
+<br><a href="../index.html">← Back to Home</a>
+</div>
+<script>
+function calc(){
+let si=(p.value*r.value*t.value)/100;
+result.innerText="Simple Interest = "+si;
+}
+</script>
+</body>
+</html>
