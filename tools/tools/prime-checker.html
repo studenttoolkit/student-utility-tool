@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prime Number Checker</title>
+<meta name="description" content="Check whether a number is prime instantly.">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;padding:40px;}
+.container{max-width:600px;margin:auto;background:#1e293b;padding:30px;border-radius:12px;}
+input{width:100%;padding:10px;border:none;border-radius:8px;}
+button{margin-top:10px;width:100%;padding:10px;background:#3b82f6;color:white;border:none;border-radius:8px;}
+a{color:#3b82f6;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Prime Checker</h1>
+<input type="number" id="num">
+<button onclick="check()">Check</button>
+<p id="result"></p>
+<br><a href="../index.html">← Back</a>
+</div>
+<script>
+function check(){
+let n=num.value,prime=true;
+for(let i=2;i<n;i++){if(n%i==0){prime=false;break;}}
+result.innerText=prime?"Prime":"Not Prime";
+}
+</script>
+</body>
+</html>
