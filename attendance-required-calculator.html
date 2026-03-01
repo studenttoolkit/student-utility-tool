@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Attendance Required Calculator</title>
+<meta name="description" content="Find how many classes you must attend to reach required attendance percentage.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin:0;font-family:Arial;background:#f4f6f9;}
+header{background:#1f2937;color:white;padding:20px;text-align:center;}
+.container{max-width:600px;margin:50px auto;background:white;padding:30px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);text-align:center;}
+input{padding:10px;margin:10px;width:80%;}
+button{padding:10px 20px;background:#2563eb;color:white;border:none;border-radius:5px;cursor:pointer;}
+footer{background:#1f2937;color:white;text-align:center;padding:20px;margin-top:50px;}
+a{text-decoration:none;color:#2563eb;}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Attendance Required Calculator</h1>
+</header>
+
+<div class="container">
+
+<input type="number" id="attended" placeholder="Classes Attended">
+<input type="number" id="total" placeholder="Total Classes Conducted">
+<input type="number" id="required" placeholder="Required Attendance % (e.g. 75)">
+<br>
+<button onclick="calculateRequired()">Calculate</button>
+
+<p id="result"></p>
+
+<br>
+<a href="index.html">← Back to Home</a>
+
+</div>
+
+<footer>
+© 2026 Student Utility Hub
+</footer>
+
+<script>
+function calculateRequired(){
+let attended = parseFloat(document.getElementById("attended").value);
+let total = parseFloat(document.getElementById("total").value);
+let required = parseFloat(document.getElementById("required").value);
+
+let currentPercent = (attended/total)*100;
+
+if(currentPercent >= required){
+document.getElementById("result").innerText="You already meet the required attendance.";
+return;
+}
+
+let x = 0;
+
+while(((attended + x)/(total + x))*100 < required){
+x++;
+}
+
+document.getElementById("result").innerText=
+"You must attend "+ x +" more consecutive classes to reach "+required+"%.";
+}
+</script>
+
+</body>
+</html>
