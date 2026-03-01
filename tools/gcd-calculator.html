@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GCD Calculator</title>
+<meta name="description" content="Calculate the Greatest Common Divisor (GCD) of two numbers instantly.">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;padding:40px;}
+.container{max-width:600px;margin:auto;background:#1e293b;padding:30px;border-radius:12px;}
+input{width:100%;padding:10px;margin:8px 0;border:none;border-radius:8px;}
+button{width:100%;padding:10px;background:#3b82f6;color:white;border:none;border-radius:8px;}
+a{color:#3b82f6;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>GCD Calculator</h1>
+<input type="number" id="a" placeholder="First Number">
+<input type="number" id="b" placeholder="Second Number">
+<button onclick="calc()">Calculate</button>
+<p id="result"></p>
+<br><a href="../index.html">← Back to Home</a>
+</div>
+<script>
+function calc(){
+let x=a.value,y=b.value;
+while(y!=0){let t=y;y=x%y;x=t;}
+result.innerText="GCD = "+x;
+}
+</script>
+</body>
+</html>
