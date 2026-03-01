@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Required GPA Calculator</title>
+<meta name="description" content="Calculate the GPA required next semester to reach your target CGPA.">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;margin:0;padding:40px;}
+.container{max-width:700px;margin:auto;background:#1e293b;padding:30px;border-radius:12px;}
+input{width:100%;padding:10px;margin:8px 0;border:none;border-radius:8px;}
+button{width:100%;padding:10px;background:#3b82f6;color:white;border:none;border-radius:8px;}
+a{color:#3b82f6;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Required GPA Calculator</h1>
+<p>Find the GPA you need next semester to reach your target CGPA.</p>
+<input type="number" id="current">
+<input type="number" id="target">
+<input type="number" id="sem">
+<button onclick="calc()">Calculate</button>
+<p id="result"></p>
+<br><a href="../index.html">← Back</a>
+</div>
+<script>
+function calc(){
+let c=current.value,t=target.value,s=sem.value;
+let need=(t*(s*1+1)-c*s);
+result.innerText="Required GPA: "+need.toFixed(2);
+}
+</script>
+</body>
+</html>
