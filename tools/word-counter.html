@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Word Counter Tool</title>
+<meta name="description" content="Count words and characters instantly using this free online word counter.">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;padding:40px;}
+.container{max-width:700px;margin:auto;background:#1e293b;padding:30px;border-radius:12px;}
+textarea{width:100%;padding:10px;border-radius:8px;border:none;}
+button{margin-top:10px;width:100%;padding:10px;background:#3b82f6;color:white;border:none;border-radius:8px;}
+a{color:#3b82f6;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Word Counter</h1>
+<textarea id="text"></textarea>
+<button onclick="count()">Count</button>
+<p id="result"></p>
+<br><a href="../index.html">← Back</a>
+</div>
+<script>
+function count(){
+let t=text.value.trim();
+let words=t==""?0:t.split(/\s+/).length;
+result.innerText="Words: "+words+" | Characters: "+t.length;
+}
+</script>
+</body>
+</html>
