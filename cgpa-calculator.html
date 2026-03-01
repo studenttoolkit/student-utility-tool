@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Free CGPA Calculator Online</title>
+    <meta name="description" content="Calculate your CGPA instantly with this free online CGPA calculator.">
+    <style>
+        body { font-family: Arial; background:#f4f6f9; text-align:center; padding:40px;}
+        .box { background:white; padding:20px; width:320px; margin:auto;
+        border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+        input { padding:8px; margin:5px; width:85%;}
+        button { padding:8px 15px; background:#007bff; color:white;
+        border:none; border-radius:5px; cursor:pointer;}
+    </style>
+</head>
+<body>
+
+<a href="index.html">← Back to Home</a>
+
+<h1>CGPA Calculator</h1>
+
+<div class="box">
+<input type="number" id="g1" placeholder="Semester 1 GPA">
+<input type="number" id="g2" placeholder="Semester 2 GPA">
+<input type="number" id="g3" placeholder="Semester 3 GPA">
+<input type="number" id="g4" placeholder="Semester 4 GPA">
+<button onclick="calculateCGPA()">Calculate</button>
+<p id="result"></p>
+</div>
+
+<script>
+function calculateCGPA(){
+let g1=parseFloat(document.getElementById("g1").value)||0;
+let g2=parseFloat(document.getElementById("g2").value)||0;
+let g3=parseFloat(document.getElementById("g3").value)||0;
+let g4=parseFloat(document.getElementById("g4").value)||0;
+
+let cgpa=(g1+g2+g3+g4)/4;
+document.getElementById("result").innerText="CGPA = "+cgpa.toFixed(2);
+}
+</script>
+
+</body>
+</html>
