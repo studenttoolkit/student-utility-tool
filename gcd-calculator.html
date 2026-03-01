@@ -1,70 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Free GCD Calculator Online</title>
-    <meta name="description" content="Calculate the Greatest Common Divisor (GCD) instantly with this free online calculator.">
-    <meta name="keywords" content="GCD calculator, greatest common divisor calculator online">
-    <style>
-        body {
-            font-family: Arial;
-            background: #f4f6f9;
-            text-align: center;
-            padding: 40px;
-        }
-        .box {
-            background: white;
-            padding: 20px;
-            margin: auto;
-            width: 320px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-        }
-        input {
-            padding: 8px;
-            margin: 5px;
-            width: 85%;
-        }
-        button {
-            padding: 8px 15px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        a {
-            display: block;
-            margin-bottom: 20px;
-            color: #007bff;
-            text-decoration: none;
-        }
-    </style>
+<title>Free GCD Calculator Online</title>
+<meta name="description" content="Calculate the Greatest Common Divisor instantly with this free online GCD calculator.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body { margin:0; font-family:Arial; background:#f4f6f9; }
+
+header {
+    background:#1f2937;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.container {
+    max-width:600px;
+    margin:50px auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+input {
+    padding:10px;
+    margin:10px;
+    width:80%;
+}
+
+button {
+    padding:10px 20px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+footer {
+    background:#1f2937;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
+a { text-decoration:none; color:#2563eb; }
+</style>
 </head>
+
 <body>
 
-<a href="index.html">← Back to Home</a>
-
+<header>
 <h1>GCD Calculator</h1>
+</header>
 
-<div class="box">
-    <input type="number" id="num1" placeholder="Enter first number">
-    <input type="number" id="num2" placeholder="Enter second number">
-    <button onclick="calculateGCD()">Calculate</button>
-    <p id="result"></p>
+<div class="container">
+<input type="number" id="num1" placeholder="Enter first number">
+<input type="number" id="num2" placeholder="Enter second number">
+<br>
+<button onclick="calculateGCD()">Calculate</button>
+<p id="result"></p>
+
+<br>
+<a href="index.html">← Back to Home</a>
 </div>
+
+<footer>
+© 2026 Student Utility Hub
+</footer>
 
 <script>
 function calculateGCD() {
-    let a = document.getElementById("num1").value;
-    let b = document.getElementById("num2").value;
+let a = document.getElementById("num1").value;
+let b = document.getElementById("num2").value;
 
-    while (b != 0) {
-        let temp = b;
-        b = a % b;
-        a = temp;
-    }
+while (b != 0) {
+let temp = b;
+b = a % b;
+a = temp;
+}
 
-    document.getElementById("result").innerText = "GCD = " + a;
+document.getElementById("result").innerText = "GCD = " + a;
 }
 </script>
 
