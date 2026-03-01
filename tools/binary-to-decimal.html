@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Binary to Decimal Converter</title>
+<meta name="description" content="Convert binary numbers to decimal easily.">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;padding:40px;}
+.container{max-width:600px;margin:auto;background:#1e293b;padding:30px;border-radius:12px;}
+input{width:100%;padding:10px;border:none;border-radius:8px;}
+button{margin-top:10px;width:100%;padding:10px;background:#3b82f6;color:white;border:none;border-radius:8px;}
+a{color:#3b82f6;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Binary to Decimal</h1>
+<input type="text" id="num" placeholder="Enter Binary Number">
+<button onclick="convert()">Convert</button>
+<p id="result"></p>
+<br><a href="../index.html">← Back to Home</a>
+</div>
+<script>
+function convert(){
+result.innerText="Decimal = "+parseInt(num.value,2);
+}
+</script>
+</body>
+</html>
